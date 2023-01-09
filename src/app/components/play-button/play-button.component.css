@@ -1,0 +1,43 @@
+
+.container-botao{
+    border-radius: 50%;
+    height: 7.5em;
+    width: 7.5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    background-color: #6856AD;
+}
+
+.button-play{
+    
+    clip-path: polygon(0 0, 0 100%, 80% 50%);
+}
+
+button{
+    border: none;
+    background-color: white;
+    height: 4em;
+    width: 4em;
+    cursor: pointer;
+    margin-right: -2em;
+}
+
+.button-pause{
+    border-radius: 0;
+    clip-path: polygon(0% 0%, 0% 100%, 20% 100%, 20% 0, 40% 0, 40% 100%, 100% 100%, 60% 100%, 60% 0);    
+}
+
+.container-botao:hover{
+    background-color: #6756ad96;
+    cursor: pointer;
+}
+
+.container-botao:active{
+    position: relative ;
+    top: 1px;
+}
+
+
+

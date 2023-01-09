@@ -1,0 +1,25 @@
+#track{
+    stroke: lightgray;
+    fill:none;
+    stroke-width: 5;
+}
+#progress{
+    fill: none;
+    stroke: #524E94;
+    stroke-width: 10;
+    stroke-dasharray: 630;
+    stroke-dashoffset: 0;        
+    /* 
+        Se dashoofet = 630 --> O progresso é 0% 
+        Se dashoofet = 0 --> O progresso é 100% 
+    */
+
+    transform: rotate(-90deg);
+    transform-origin: center;
+}
+
+.texto{
+    color: white;
+    font-size: 35px;
+    border: 1px solid red;
+}

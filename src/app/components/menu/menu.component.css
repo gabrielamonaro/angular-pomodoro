@@ -2,8 +2,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width:100%;
-    border:1px solid red;
+    width:100vw;
+    max-width: 750px;
 }
 
 .icon{
@@ -11,12 +11,12 @@
 }
 
 ul{
-    margin: 20px 0;
+    margin: 10% 0 0 0;
     width: 100%;
     display: flex;
     justify-content: space-around;
     list-style: none;
-    padding: 20px 0;
+    padding: 20px 0 0 0;
     text-align: center;
 }
 
@@ -24,6 +24,16 @@ li{
     width: 50%;
     padding: 20px;
     border-top:1px solid #2B2736;
+}
+
+li:hover{
+    cursor: pointer;
+}
+
+li:active{
+    position: relative;
+    top:1px;
+
 }
 
 .menu-ativo{
@@ -37,3 +47,10 @@ li:last-child{
     padding-right: 80px;
 } 
 
+
+@media screen and (min-width: 800px){
+    ul{
+        margin:0;
+}
+
+}

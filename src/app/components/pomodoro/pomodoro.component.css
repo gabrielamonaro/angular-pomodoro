@@ -1,0 +1,33 @@
+.container-pomodoro{
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10%;
+}
+
+.next{
+    stroke: #353540;
+    fill: #353540;
+}
+
+.current{
+    stroke: #4B5196;
+    fill: #353540;
+    stroke-width: 3;
+}
+
+.previous{
+    stroke: #4B5196;
+    fill: #4B5196;
+}
+
+.line-disabled{
+    stroke: #2B2736;
+}
+
+.line-activated{
+    stroke:#3A3B63;
+    stroke-width:5px;
+}

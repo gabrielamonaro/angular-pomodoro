@@ -13,3 +13,21 @@ main{
     display: flex;
     justify-content: center;
 }
+
+.botao-container{
+    margin: 5%;
+}
+
+@media screen and (min-width: 800px){
+    .botao-container{
+        margin:0;
+        margin-top: 10px;
+
+}
+
+.botao-container{
+    margin: 4.5%;
+}
+
+
+}

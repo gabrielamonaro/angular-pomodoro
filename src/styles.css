@@ -6,3 +6,7 @@
     font-family: 'Alef', sans-serif;
 font-family: 'Signika Negative', sans-serif;
 }
+
+.borda{
+    border: 1px solid red;
+}

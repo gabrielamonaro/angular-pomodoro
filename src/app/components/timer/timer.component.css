@@ -1,3 +1,8 @@
+.timer{
+    padding: 10px;
+    
+}
+
 #track{
     stroke: lightgray;
     fill:none;
@@ -21,5 +26,8 @@
 .texto{
     color: white;
     font-size: 35px;
-    border: 1px solid red;
+}
+
+.time{
+    font-size: 45px;
 }

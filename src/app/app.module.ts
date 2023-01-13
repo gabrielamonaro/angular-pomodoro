@@ -11,6 +11,8 @@ import { PlayButtonComponent } from './components/play-button/play-button.compon
 import { PomodoroComponent } from './components/pomodoro/pomodoro.component';
 import { TimerComponent } from './components/timer/timer.component';
 import { MenuComponent } from './components/menu/menu.component';
+import { SectionComponent } from './components/section/section.component';
+import { SectionOpenComponent } from './components/section-open/section-open.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { MenuComponent } from './components/menu/menu.component';
     PlayButtonComponent,
     PomodoroComponent,
     TimerComponent,
-    MenuComponent
+    MenuComponent,
+    SectionComponent,
+    SectionOpenComponent
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,19 @@
 <nav class="container-menu">
     <ul>
-        <li class="menu-ativo"> <img src="../../../assets/imgs/clock.svg" class="icon" alt=""></li>
-        <li> <img src="../../../assets/imgs/settings.svg" class="icon"></li>
+        <li id="clock"
+            [routerLink]="['']"
+            [routerLinkActive]="['menu-ativo']"
+            [routerLinkActiveOptions]="{exact:true}">    
+
+            <img src="../../../assets/imgs/clock.svg" 
+            class="icon"  alt="">
+        </li>
+        <li id="settings"
+            [routerLink]="['/settings']"
+            [routerLinkActive]="['menu-ativo']"
+            [routerLinkActiveOptions]="{exact:true}"> 
+            <img src="../../../assets/imgs/settings.svg" 
+            class="icon" >
+        </li>
     </ul>
 </nav>

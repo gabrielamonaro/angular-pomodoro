@@ -15,3 +15,9 @@ button{
     align-items: center;
     margin: 20px 0 ;
 }
+
+
+button:active{
+    position: relative;
+    top: 1px;
+ }

@@ -23,7 +23,7 @@ ul{
 li{
     width: 50%;
     padding: 20px;
-    border-top:1px solid #2B2736;
+    border-top:2px solid #2B2736;
 }
 
 li:hover{
@@ -51,6 +51,5 @@ li:last-child{
 @media screen and (min-width: 800px){
     ul{
         margin:0;
-}
-
+    }
 }

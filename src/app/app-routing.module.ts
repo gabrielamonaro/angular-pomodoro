@@ -6,8 +6,8 @@ import { MainComponent } from './pages/main/main.component';
 import { SettingsComponent } from './pages/settings/settings.component';
 
 const routes: Routes = [
-  {path: '', component: HomeComponent},
-  {path: 'pomodoro', component: MainComponent},
+ 
+  {path: '', component: MainComponent},
   {path: 'settings', component: SettingsComponent}
 ];
 

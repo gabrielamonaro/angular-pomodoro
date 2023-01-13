@@ -1,0 +1,57 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    border-radius: 40px;
+    background-color: #353543;
+    width: 90%;
+    padding: 10px;
+    padding-bottom: 28px;
+    color: #ABABAE;
+}
+.visible-part{
+    display: flex;
+    justify-content: space-between;
+    padding: 25px 25px 0 25px;
+}
+
+.closed{
+    display: none;
+}
+
+.open{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.option{
+    width: 100%;
+    text-align: center;
+}
+
+.option:hover{
+    background-color: #53478A;
+    border-radius: 40px;
+}
+
+.arrow-btn{
+    border: none;
+    background-color: transparent;
+    width: 10px;
+}
+
+.arrow-btn img{
+    width: 20px;
+}
+
+.arrow-btn:active{
+    position: relative;
+    top: 1px;
+ }
+
+.time-settings{
+    width: 30%;
+    display: flex;
+    justify-content: end;
+}

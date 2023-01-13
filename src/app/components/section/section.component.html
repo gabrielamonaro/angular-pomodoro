@@ -1,0 +1,46 @@
+<div class="container" >
+    <div  class="visible-part">
+        <span class="title">Focuse time</span>
+        <div class="time-settings">
+        <span  class="time"> 20 min</span>
+        <button class="arrow-btn" (click)='changeVisibility()'>        
+        <img src="../../../assets/imgs/arrow-down-line.svg" alt=""></button>
+        </div>
+    </div>
+    <div *ngIf="visibility" class="open">
+        <span class="option">20</span>
+        <span class="option">30</span>
+        <span class="option">40</span>
+        <span class="option">50</span>
+        <span class="option">60</span>
+    </div>
+
+
+</div>
+
+
+
+<!-- <div class="container">
+    <span class="title">Short break</span>
+    <div class="time-settings">
+        <span  class="time">5 min</span>
+        <button class="arrow-btn"><img src="../../../assets/imgs/arrow-down-line.svg" alt=""></button>
+    </div>
+</div>
+
+<div class="container">
+    <span class="title">Long break</span>
+    <div class="time-settings">
+        <span  class="time">15 min</span>
+        <button class="arrow-btn"><img src="../../../assets/imgs/arrow-down-line.svg" alt=""></button>
+    </div>
+</div>
+
+<div class="container">
+    <span class="title">Sections</span>
+    <div class="time-settings">
+        <span  class="time">4 intervals</span>
+        <button class="arrow-btn"><img src="../../../assets/imgs/arrow-down-line.svg" alt=""></button>
+    </div>
+   
+</div> -->

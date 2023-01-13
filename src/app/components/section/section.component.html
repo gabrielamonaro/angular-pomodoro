@@ -7,7 +7,7 @@
         <img src="../../../assets/imgs/arrow-down-line.svg" alt=""></button>
         </div>
     </div>
-    <div *ngIf="visibility[element.id]" class="open">
+    <div *ngIf="visibility[element.id-1]" class="open">
         <span class="option" *ngFor="let p of element.options"> {{p.name}} </span>
     </div>
 </div>

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { filter } from 'rxjs';
 import sections_data from "../../../assets/data/sections_data.json"
 @Component({
 
@@ -7,7 +8,7 @@ import sections_data from "../../../assets/data/sections_data.json"
   styleUrls: ['./section.component.css']
 })
 export class SectionComponent implements OnInit {
-  @Input() visibility:boolean[] = [false,false,false,false];
+  visibility:boolean[] = [false,false,false,false];
   sections = sections_data;
  
   constructor() { }
@@ -17,13 +18,15 @@ export class SectionComponent implements OnInit {
   }
 
   changeVisibility(id: number){
-   if(this.visibility[id] == false)
+   if(this.visibility[id-1] == false)
     {
-      this.visibility[id] = true;
+      this.visibility[id-1] = true;
+     
     }
     else{
-      this.visibility[id] = false;
+      this.visibility[id-1] = false;
     }
   }
+
 
 }

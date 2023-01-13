@@ -14,8 +14,19 @@
     justify-content: center;
 }
 
-.botao-container{
-    margin: 5%;
+
+
+.name{  color: white;
+    border-radius: 30px;
+    text-align: center;
+    border: 0;
+    padding: 15px;
+    font-size: 20px;
+    width: 50%;
+    max-width: 250px ;
+    margin: 20px 0 0 0;
+    background-color: #6856AD; 
+
 }
 
 @media screen and (min-width: 800px){
@@ -25,16 +36,13 @@
 }
 
 .container-botao{
-    margin: 2%;
-}
-
-.container-pomodoro{
     margin: 1%;
 }
 
 .container-timer{
-    margin: 1.5%;
+    margin: 1%;
 }
+
 
 
 }

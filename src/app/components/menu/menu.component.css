@@ -3,7 +3,10 @@
     justify-content: center;
     align-items: center;
     width:100vw;
-    max-width: 750px;
+    max-width: 500px;
+    background-color: #2B2736;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .icon{
@@ -46,7 +49,6 @@ li:first-child{
 li:last-child{
     padding-right: 80px;
 } 
-
 
 @media screen and (min-width: 800px){
     ul{

@@ -4,9 +4,14 @@
     margin: 0 ;
     box-sizing: border-box;
     font-family: 'Alef', sans-serif;
-font-family: 'Signika Negative', sans-serif;
+    font-family: 'Signika Negative', sans-serif;
+    
 }
 
 .borda{
     border: 1px solid red;
+}
+
+body{
+    background-color: #2B2736;
 }

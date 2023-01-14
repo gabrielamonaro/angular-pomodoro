@@ -1,7 +1,7 @@
 .main-container{
     background-color: #2B2736;
     width: 100%;
-    height: calc(100vh - 110px);
+    height: calc(100vh - 160px);
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -16,15 +16,16 @@
 
 
 
-.name{  color: white;
+.name{  
+    color: white;
     border-radius: 30px;
     text-align: center;
     border: 0;
-    padding: 15px;
+    padding: 10px;
     font-size: 20px;
     width: 50%;
     max-width: 250px ;
-    margin: 20px 0 0 0;
+    margin: 5px 0 -20px 0;
     background-color: #6856AD; 
 
 }

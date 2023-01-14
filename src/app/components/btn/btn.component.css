@@ -18,6 +18,16 @@ button{
     background-color: transparent; 
 }
 
+.btn-transparent:hover
+{
+    background-color: transparent;
+    background-color: #4f437c41; 
+}
+
+button:hover{
+    cursor: pointer;
+    background-color: #4F437C;
+ }
 
 button:active{
     position: relative;

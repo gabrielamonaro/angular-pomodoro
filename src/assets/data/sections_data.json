@@ -1,6 +1,6 @@
 [
         {   
-            "id":1,
+            "id":0,
             "title": "Focuse time",
             "options":[
             {"id": 1,  "value": "25:00"},
@@ -11,7 +11,7 @@
             ]
         },
         {   
-            "id":2,
+            "id":1,
             "title": "Short break",
             "id_group":"shortBreak",
             "options":[
@@ -21,7 +21,7 @@
             ]
         },
         {   
-            "id":3,
+            "id":2,
             "title": "Long break",
             "id_group":"longBreak",
             "options":[
@@ -31,7 +31,7 @@
             ]
         },
         {   
-            "id":4,
+            "id":3,
             "title": "Sections",
             "id_group":"sections",
             "options":[

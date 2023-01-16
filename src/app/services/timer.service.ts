@@ -8,10 +8,10 @@ import { filter } from 'rxjs';
 
 export class TimerService {
   time = '30:00'
-  focuseTime = ''
-  shortBreak = ''
-  longBreak = ''
-  sections = ''
+  focuseTime = '25:00'
+  shortBreak = '05:00'
+  longBreak = '15:00'
+  sections = '4'
 
   setFocuseTime(newTime: string)
   {

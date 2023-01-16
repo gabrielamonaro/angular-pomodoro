@@ -1,7 +1,7 @@
 .main-container{
     background-color: #2B2736;
     width: 100%;
-    height: calc(100vh - 160px);
+    height: calc(100vh - 200px);
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -30,7 +30,7 @@
 
 }
 
-@media screen and (min-width: 800px){
+ @media screen and (min-width: 800px){
     .botao-container{
         margin:0;
         margin-top: 10px;

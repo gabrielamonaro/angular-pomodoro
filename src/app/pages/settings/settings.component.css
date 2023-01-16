@@ -1,7 +1,7 @@
 .main-container{
     padding-top: 20px;
     width: 100%;
-    height: calc(100vh - 160px);
+    height: calc(100vh - 200px);
     background-color: #2B2736;
     display: flex;
     justify-content: center;
@@ -23,13 +23,12 @@
     display: flex;
     justify-content: space-around;
     flex-direction: row;
-    margin: 10px 0 -20px 0 ;
 }
 
 
 @media screen and (min-width: 800px)
 {
-    .sections{
+     .sections{
         max-width: 700px;
     }
     .main-container{
@@ -39,5 +38,5 @@
     .container-botoes{
 
         margin: 10px 0 0 0 ;
-    }
+    } 
 }

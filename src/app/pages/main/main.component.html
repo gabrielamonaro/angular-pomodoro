@@ -7,7 +7,7 @@
         {{intervalName}}
     </div>
     <div class="container-timer" >
-        <app-timer ></app-timer>
+        <app-timer time="{{time}}"></app-timer>
     </div> 
  
     <div class="container-pomodoro">
@@ -15,7 +15,7 @@
     </div>
 
     <div class="container-botao ">
-        <app-play-button></app-play-button>  
+        <app-play-button (click)="play()"></app-play-button>  
     </div> 
     
     

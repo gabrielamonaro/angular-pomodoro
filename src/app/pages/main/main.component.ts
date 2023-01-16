@@ -7,7 +7,7 @@ import {TimerService} from '../../services/timer.service'
 })
 export class MainComponent implements OnInit {
  @Input() intervalName:string = 'Focuse Time'
- @Input() time = '25:00'
+ @Input() time = this.timer.time
   constructor(private timer: TimerService) { }
 
   ngOnInit(): void {

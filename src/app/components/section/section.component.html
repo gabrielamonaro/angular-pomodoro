@@ -2,12 +2,12 @@
     <div  class="visible-part">
         <span class="title">{{element.title}}</span>
         <div class="time-settings">
-        <span  class="time"> {{element.options[0].name}} </span>
+        <span  class="time"> {{id_option}} </span>
         <button class="arrow-btn" (click)='changeVisibility(element.id)'>        
         <img src="../../../assets/imgs/arrow-down-line.svg" alt=""></button>
         </div>
     </div>
     <div *ngIf="visibility[element.id-1]" class="open">
-        <span class="option" *ngFor="let p of element.options"> {{p.name}} </span>
+        <span class="option" *ngFor="let p of element.options" (click)="Clicou(p)">  {{p.name}} </span>
     </div>
 </div>

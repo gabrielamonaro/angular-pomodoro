@@ -10,12 +10,8 @@ import sections_data from "../../../assets/data/sections_data.json"
 export class SectionComponent implements OnInit {
   visibility:boolean[] = [false,false,false,false];
   sections = sections_data;
-  @Input() id_option: string[] = [
-    this.timer.focuseTime,
-    this.timer.shortBreak,
-    this.timer.longBreak,
-    this.timer.sections
-  ]
+  @Input() id_option: string[] = this.timer.config
+  
  
   constructor(private timer:TimerService) { }
 
@@ -36,7 +32,7 @@ export class SectionComponent implements OnInit {
 
   Clicou(element: any, p: any){
     this.id_option[0] = (p.value)
-    this.timer.setFocuseTime(p.value)
+    this.timer.setValues(p.value, element.id)
     this.changeVisibility(element.id);
   }
 

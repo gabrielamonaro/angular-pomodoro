@@ -4,28 +4,27 @@ import { filter } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
-})
+})  
+
 
 export class TimerService {
+ 
   time = '30:00'
-  focuseTime = '25:00'
-  shortBreak = '05:00'
-  longBreak = '15:00'
-  sections = '4'
+  config = ['25:00','05:00','15:00','4']
+  //focuseTime, shortBreak, longBreak,sections 
 
-  setFocuseTime(newTime: string)
+  setValues(newTime: string, id: number)
   {
-    this.focuseTime = newTime;
+    this.config[id-1] = newTime;
     this.time = newTime;
   }
 
-  getFocuseTime()
-  {
-    return this.focuseTime;
-  }
+
 
   constructor() { 
   }
   setFormat = (num: any) => num >= 0 && num < 10 ? '0' + num.toString() :  num
 
+ 
 }
+

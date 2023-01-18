@@ -14,20 +14,10 @@ export class MainComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  firstPlay = true
-  playing = true
-
   play(){
-   
     const type = this.timer.changeButton()
-    if (type == 'play')
-    {
-      this.playing = false
-      return
-    }
-    else{
-      this.playing = true
-    }
+    this.timer.verifyButton(type)? {return: {}} : {}
+    let lastMinute = true
     let min = parseInt(this.time.slice(0,2))
     let sec = parseInt(this.time.slice(3,5))    
 
@@ -37,50 +27,75 @@ export class MainComponent implements OnInit {
       this.timer.changeButton()
       return
     }
-    let lastMinute = true
+    
     if (sec == 0)
     {
       sec = 60;
       min --;
     }
 
-    if(this.firstPlay)
+    if(this.timer.firstPlay)
     {
       this.timerSet(sec, min, lastMinute)
-      this.firstPlay = false
+      this.timer.firstPlay = false
     }
-    
-    
   }
 
-  timerSet(sec: number, min: number, lastMinute:boolean)
+  // timerSet(sec: number, min: number, lastMinute:boolean)
+  // {
+  //   let secondsTimer = setInterval(() => {
+  //     if(sec>0 && min>=0 && this.timer.playing)
+  //     { 
+  //       sec--;
+  //       this.showTime(min, sec)
+  //     }
+  //     else if(sec == 0 && min != 0 && lastMinute && this.timer.playing)
+  //     {
+  //       min--
+  //       sec = 59
+  //       this.showTime(min, sec)
+  //       min == 0 ? lastMinute = false : {}
+  //     }
+  //     else{
+  //       if (this.timer.playing)
+  //       {
+  //         clearInterval(secondsTimer)
+  //         this.timer.timeout()
+  //         this.timer.changeButton()
+  //         this.timer.firstPlay = true
+  //       }
+  //     }
+  //   }, 1000)     
+  //     sec--
+  //     this.showTime(min, sec)
+  // }
+
+
+    timerSet(sec: number, min: number, lastMinute:boolean)
   {
     let secondsTimer = setInterval(() => {
-      if(sec>0 && min>=0 && this.playing)
+      if(sec>0 && min>=0 && this.timer.playing)
       { 
         sec--;
         this.showTime(min, sec)
       }
-      else if(sec == 0 && min != 0 && lastMinute && this.playing)
+      else if(sec == 0 && min != 0 && lastMinute && this.timer.playing)
       {
-        min--
-        sec = 59
+        [min, sec] = this.timer.setNewMinute(min, sec, lastMinute)
         this.showTime(min, sec)
-        min == 0 ? lastMinute = false : {}
       }
       else{
-        if (this.playing)
+        if (this.timer.playing)
         {
           clearInterval(secondsTimer)
-          this.timer.timeout()
-          this.timer.changeButton()
-          this.firstPlay = true
+          this.timer.finished()
         }
       }
     }, 1000)     
       sec--
       this.showTime(min, sec)
   }
+
 
   showTime = (min: number, sec: number) =>  this.time = this.timer.setFormat(min)+':'+ this.timer.setFormat(sec)
 

@@ -9,8 +9,11 @@ import { filter } from 'rxjs';
 
 export class TimerService {
  
-  time = '00:05'
+  time = '02:05'
   config = ['25:00','05:00','15:00','4']
+
+  firstPlay = true
+  playing = true
   
   //focuseTime, shortBreak, longBreak,sections 
 
@@ -48,14 +51,44 @@ export class TimerService {
    }  
   }
 
+  setNewMinute(min: number, sec:number, lastMinute: boolean)
+  {
+    min--
+    sec = 59
+    min == 0 ? lastMinute = false : {}
+    return [min, sec]
+  }
+
+  finished()
+  {
+    if (this.playing)
+    {
+      this.timeout()
+      this.changeButton()
+      this.firstPlay = true
+    }
+  }
+ 
+
   timeout()
   {
     const audio = new Audio(document.querySelector('#time_out')?.attributes[1].value);
     audio.play();
   }
 
+  verifyButton(type:string) //main.ts no play()
+  {
+    if (type == 'play')
+    {
+      this.playing = false
+      return true
+    }
+    else{
+      this.playing = true
+      return false
+    }
+  }
 
- 
 }
 
 

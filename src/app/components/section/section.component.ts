@@ -11,7 +11,6 @@ export class SectionComponent implements OnInit {
   visibility:boolean[] = [false,false,false,false];
   sections = sections_data;
   @Input() id_option: string[] = this.timer.config
-  
  
   constructor(private timer:TimerService) { }
 
@@ -34,6 +33,7 @@ export class SectionComponent implements OnInit {
     this.id_option[0] = (p.value)
     this.timer.setValues(p.value, element.id)
     this.changeVisibility(element.id);
+    this.timer.firstPlay = true;
   }
 
 }

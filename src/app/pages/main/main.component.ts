@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { first, last, timeout } from 'rxjs';
 import {TimerService} from '../../services/timer.service'
 @Component({
   selector: 'app-main',

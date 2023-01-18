@@ -9,8 +9,9 @@ import { filter } from 'rxjs';
 
 export class TimerService {
  
-  time = '02:05'
+  
   config = ['25:00','05:00','15:00','4']
+  time = this.config[0]
 
   firstPlay = true
   playing = true
@@ -25,6 +26,7 @@ export class TimerService {
     {
       this.time = newTime;
     }
+    console.log(this.config)
     
   }
 

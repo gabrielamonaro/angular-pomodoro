@@ -9,7 +9,7 @@ import { filter } from 'rxjs';
 
 export class TimerService {
  
-  time = '01:00'
+  time = '00:05'
   config = ['25:00','05:00','15:00','4']
   
   //focuseTime, shortBreak, longBreak,sections 

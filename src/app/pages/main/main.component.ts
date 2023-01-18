@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { last, timeout } from 'rxjs';
+import { first, last, timeout } from 'rxjs';
 import {TimerService} from '../../services/timer.service'
 @Component({
   selector: 'app-main',
@@ -14,11 +14,22 @@ export class MainComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  play(){
-    const type = this.timer.changeButton()
+  firstPlay = true
+  playing = true
 
+  play(){
+   
+    const type = this.timer.changeButton()
+    if (type == 'play')
+    {
+      this.playing = false
+      return
+    }
+    else{
+      this.playing = true
+    }
     let min = parseInt(this.time.slice(0,2))
-    let sec = parseInt(this.time.slice(4,5))
+    let sec = parseInt(this.time.slice(3,5))    
 
     if(min == 0 && sec == 0)
     {
@@ -26,32 +37,49 @@ export class MainComponent implements OnInit {
       this.timer.changeButton()
       return
     }
-
-    sec = 60;  
     let lastMinute = true
-    min--
-      
+    if (sec == 0)
+    {
+      sec = 60;
+      min --;
+    }
+
+    if(this.firstPlay)
+    {
+      this.timerSet(sec, min, lastMinute)
+      this.firstPlay = false
+    }
+    
+    
+  }
+
+  timerSet(sec: number, min: number, lastMinute:boolean)
+  {
     let secondsTimer = setInterval(() => {
-        if(sec>0 && min>=0 )
-        { 
-          sec--;
-          this.showTime(min, sec)
-        }
-        else if(sec == 0 && min != 0 && lastMinute)
+      if(sec>0 && min>=0 && this.playing)
+      { 
+        sec--;
+        this.showTime(min, sec)
+      }
+      else if(sec == 0 && min != 0 && lastMinute && this.playing)
+      {
+        min--
+        sec = 59
+        this.showTime(min, sec)
+        min == 0 ? lastMinute = false : {}
+      }
+      else{
+        if (this.playing)
         {
-          min--
-          sec = 59
-          this.showTime(min, sec)
-          min == 0 ? lastMinute = false : {}
-        }
-        else{
           clearInterval(secondsTimer)
           this.timer.timeout()
           this.timer.changeButton()
+          this.firstPlay = true
         }
-      }, 1000)     
-        sec--
-        this.showTime(min, sec)
+      }
+    }, 1000)     
+      sec--
+      this.showTime(min, sec)
   }
 
   showTime = (min: number, sec: number) =>  this.time = this.timer.setFormat(min)+':'+ this.timer.setFormat(sec)

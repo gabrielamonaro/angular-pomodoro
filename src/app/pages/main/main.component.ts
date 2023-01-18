@@ -15,53 +15,43 @@ export class MainComponent implements OnInit {
   }
 
   play(){
-    
-    
-    const type = this.timer.changeButton();
+    const type = this.timer.changeButton()
 
-    let min = parseInt(this.time.slice(0,2));
-    let sec = 60;
-    let lastMinute = true;
-    
-      min--;
+    let min = parseInt(this.time.slice(0,2))
+    let sec = parseInt(this.time.slice(4,5))
+
+    if(min == 0 && sec == 0)
+    {
+      this.time = this.timer.config[0]
+      this.timer.changeButton()
+      return
+    }
+
+    sec = 60;  
+    let lastMinute = true
+    min--
       
     let secondsTimer = setInterval(() => {
         if(sec>0 && min>=0 )
         { 
           sec--;
-          this.showTime(min, sec);
+          this.showTime(min, sec)
         }
         else if(sec == 0 && min != 0 && lastMinute)
         {
-          min--;
-          sec = 59;
-          this.showTime(min, sec);
-          if(min == 0)
-          {
-            lastMinute = false;
-          }
+          min--
+          sec = 59
+          this.showTime(min, sec)
+          min == 0 ? lastMinute = false : {}
         }
-        // else if(min == 0 && sec == 0 && lastMinute)
-        // {
-        //   sec = 59;
-        //   this.showTime(min, sec);
-        //   lastMinute = false;
-        // }
         else{
-          // this.timer.timeout()
           clearInterval(secondsTimer)
           this.timer.timeout()
+          this.timer.changeButton()
         }
-      
-        
       }, 1000)     
-
-        sec--;
-        this.showTime(min, sec);
-
-
-
-     
+        sec--
+        this.showTime(min, sec)
   }
 
   showTime = (min: number, sec: number) =>  this.time = this.timer.setFormat(min)+':'+ this.timer.setFormat(sec)

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { last, timeout } from 'rxjs';
 import {TimerService} from '../../services/timer.service'
 @Component({
   selector: 'app-main',
@@ -14,36 +15,53 @@ export class MainComponent implements OnInit {
   }
 
   play(){
+    
+    
+    const type = this.timer.changeButton();
+
     let min = parseInt(this.time.slice(0,2));
     let sec = 60;
     let lastMinute = true;
-
-    let minuteTimer = setInterval(() => {
-      min>=0 ? min-- : {}
-    },60000)
     
       min--;
       
     let secondsTimer = setInterval(() => {
-        if(sec>0 && min>=0)
+        if(sec>0 && min>=0 )
         { 
           sec--;
           this.showTime(min, sec);
         }
-        else if(min == 0 && sec == 0 && lastMinute)
+        else if(sec == 0 && min != 0 && lastMinute)
         {
+          min--;
           sec = 59;
           this.showTime(min, sec);
-          lastMinute = false;
+          if(min == 0)
+          {
+            lastMinute = false;
+          }
         }
+        // else if(min == 0 && sec == 0 && lastMinute)
+        // {
+        //   sec = 59;
+        //   this.showTime(min, sec);
+        //   lastMinute = false;
+        // }
         else{
-          clearInterval(minuteTimer)
+          // this.timer.timeout()
           clearInterval(secondsTimer)
+          this.timer.timeout()
         }
+      
+        
       }, 1000)     
-  
-      sec--;
-      this.showTime(min, sec);
+
+        sec--;
+        this.showTime(min, sec);
+
+
+
+     
   }
 
   showTime = (min: number, sec: number) =>  this.time = this.timer.setFormat(min)+':'+ this.timer.setFormat(sec)

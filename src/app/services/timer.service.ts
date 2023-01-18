@@ -9,7 +9,7 @@ import { filter } from 'rxjs';
 
 export class TimerService {
  
-  time = '30:00'
+  time = '01:00'
   config = ['25:00','05:00','15:00','4']
   
   //focuseTime, shortBreak, longBreak,sections 
@@ -25,13 +25,37 @@ export class TimerService {
     
   }
 
-
-
   constructor() { 
   
   }
   setFormat = (num: any) => num >= 0 && num < 10 ? '0' + num.toString() :  num
 
+  changeButton(){
+    const botao = document.querySelector('#botao');
+    
+    if(botao?.getAttribute("type") == "play")
+    {
+      botao.setAttribute("type", "pause")
+      botao?.classList.add('button-pause');
+      botao?.classList.remove('button-play')
+      return 'pause'
+    }
+    else{
+      botao?.setAttribute("type", "play")
+      botao?.classList.add('button-play');
+      botao?.classList.remove('button-pause')
+      return 'play'
+   }  
+  }
+
+  timeout()
+  {
+    const audio = new Audio(document.querySelector('#time_out')?.attributes[1].value);
+    audio.play();
+  }
+
+
  
 }
+
 

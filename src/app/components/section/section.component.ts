@@ -16,9 +16,7 @@ export class SectionComponent implements OnInit {
   constructor(private timer:TimerService) { }
 
   ngOnInit(): void {  
-      this.id_option.forEach(element => {
-        console.log(element)
-      });
+
   }
 
   changeVisibility(id: number){

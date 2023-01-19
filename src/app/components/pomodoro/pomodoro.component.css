@@ -1,3 +1,4 @@
+
 .container-pomodoro{
     width: 100%;
     margin-left: auto;
@@ -30,4 +31,8 @@
 .line-activated{
     stroke:#3A3B63;
     stroke-width:5px;
+}
+
+.none{
+    display: none;
 }

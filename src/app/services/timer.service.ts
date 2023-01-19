@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
-import { Input } from '@angular/core';
-import { filter } from 'rxjs';
+import { identifierName } from '@angular/compiler';
+import {Injectable } from '@angular/core';
+
 
 @Injectable({
   providedIn: 'root'
@@ -8,8 +8,13 @@ import { filter } from 'rxjs';
 
 
 export class TimerService {
- 
+
+  constructor() { 
   
+  }
+
+ 
+  pomodoro:string[] = [] 
   config = ['25:00','05:00','15:00','4']
   time = this.config[0]
 
@@ -20,19 +25,14 @@ export class TimerService {
 
   setValues(newTime: string, id: number)
   {
-    console.log(this.config[id])
     this.config[id] = newTime;
     if( id!=3)
     {
       this.time = newTime;
-    }
-    console.log(this.config)
-    
+    }    
   }
 
-  constructor() { 
-  
-  }
+
   setFormat = (num: any) => num >= 0 && num < 10 ? '0' + num.toString() :  num
 
   changeButton(){
@@ -91,6 +91,34 @@ export class TimerService {
     }
   }
 
+ 
+
+  sequencesMaker(value: number)
+  {
+    this.pomodoro = []
+    let shortBreakCounter = 0;
+
+    for(let i=0; i<value; i++)
+    {
+      this.pomodoro.push(this.config[0])
+      if(shortBreakCounter == 3 && i != value-1)
+      {
+        this.pomodoro.push(this.config[2])
+        shortBreakCounter = 0
+      }
+      else{
+        i != value-1?this.pomodoro.push(this.config[1]):{}
+        shortBreakCounter++
+      }
+      
+      
+    }
+    console.log("this.pomodoro:")
+      console.log(this.pomodoro)
+      console.log("______")
+  }
 }
+
+
 
 

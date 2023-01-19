@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import {TimerService } from '../../services/timer.service'
 import sections_data from "../../../assets/data/sections_data.json"
+import {SequencesManagerService} from '../../services/sequences-manager.service'
 @Component({
 
   selector: 'app-section',
@@ -12,7 +13,10 @@ export class SectionComponent implements OnInit {
   sections = sections_data;
   @Input() id_option: string[] = this.timer.config
  
-  constructor(private timer:TimerService) { }
+  constructor(
+    private timer:TimerService,
+    private sequencia:SequencesManagerService
+    ) { }
 
   ngOnInit(): void {  
 
@@ -30,10 +34,11 @@ export class SectionComponent implements OnInit {
   }
 
   Clicou(element: any, p: any){
-    this.id_option[0] = (p.value)
+    element.id != 3 ? this.id_option[0] = (p.value) : this.timer.sequencesMaker(p.value)
     this.timer.setValues(p.value, element.id)
     this.changeVisibility(element.id);
     this.timer.firstPlay = true;
   }
+
 
 }

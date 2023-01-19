@@ -8,9 +8,13 @@ import {TimerService} from '../../services/timer.service'
 export class MainComponent implements OnInit {
  @Input() intervalName:string = 'Focuse Time'
  @Input() time = this.timer.time
-  constructor(private timer: TimerService) { }
+  constructor(private timer: TimerService) { 
+    
+  }
 
   ngOnInit(): void {
+  
+    
   }
 
   play(){
@@ -39,36 +43,6 @@ export class MainComponent implements OnInit {
       this.timer.firstPlay = false
     }
   }
-
-  // timerSet(sec: number, min: number, lastMinute:boolean)
-  // {
-  //   let secondsTimer = setInterval(() => {
-  //     if(sec>0 && min>=0 && this.timer.playing)
-  //     { 
-  //       sec--;
-  //       this.showTime(min, sec)
-  //     }
-  //     else if(sec == 0 && min != 0 && lastMinute && this.timer.playing)
-  //     {
-  //       min--
-  //       sec = 59
-  //       this.showTime(min, sec)
-  //       min == 0 ? lastMinute = false : {}
-  //     }
-  //     else{
-  //       if (this.timer.playing)
-  //       {
-  //         clearInterval(secondsTimer)
-  //         this.timer.timeout()
-  //         this.timer.changeButton()
-  //         this.timer.firstPlay = true
-  //       }
-  //     }
-  //   }, 1000)     
-  //     sec--
-  //     this.showTime(min, sec)
-  // }
-
 
     timerSet(sec: number, min: number, lastMinute:boolean)
   {
@@ -99,4 +73,5 @@ export class MainComponent implements OnInit {
   showTime = (min: number, sec: number) =>  this.time = this.timer.setFormat(min)+':'+ this.timer.setFormat(sec)
 
 
+  
 }

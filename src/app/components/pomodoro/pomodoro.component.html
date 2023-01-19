@@ -1,33 +1,15 @@
-<div class="container-pomodoro">
+<div class="container-pomodoro" id="pomodoro" >
 
-    <svg width="100" height="25" class="circles">
-        <circle r="5" cx="10" cy="10"  
+
+ <svg [attr.width]="widthBox" height="25" class="circles">
+
+        <circle *ngFor="let p of newCircles" r="5" [attr.cx]="p" cy="10"  
         class="previous"
-        id="circle-1">
-        </circle>
-        <line x1="15" y1="10" x2="30" y2="10" 
-        class="line-activated" 
-        id="line-1"></line>
-        
-        <circle r="5" cx="35" cy="10"  
-        class="current"
-        id="circle-2">
-        </circle>
-        <line x1="60" y1="10" x2="41" y2="10" 
-        class="line-disabled" 
-        id="line-2"></line>
+        circleNumber="1">
+         </circle>
 
-        <circle r="5" cx="60" cy="10"  
-        class="next" 
-        id="circle-3">
-        </circle>
-        <line x1="65" y1="10" x2="80" y2="10" 
-        class="line-disabled" 
-        id="line-3"></line>
-        
-        <circle r="5" cx="85" cy="10"  
-        class="next"
-        id="circle-4">
-        </circle>
-    </svg>
+        <line *ngFor="let n of newLines" [attr.x1]="n" y1="10" [attr.x2]="n+15" y2="10" 
+         class="line-activated" 
+         line="1"></line>
+    </svg> 
 </div>

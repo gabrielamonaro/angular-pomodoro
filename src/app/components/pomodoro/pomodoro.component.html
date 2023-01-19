@@ -1,15 +1,13 @@
 <div class="container-pomodoro" id="pomodoro" >
 
 
- <svg [attr.width]="widthBox" height="25" class="circles">
+ <svg [attr.width]="widthBox" height="25" class="circles" id="svg-circles">
 
         <circle *ngFor="let p of newCircles" r="5" [attr.cx]="p" cy="10"  
-        class="previous"
-        circleNumber="1">
+        class="next">
          </circle>
 
         <line *ngFor="let n of newLines" [attr.x1]="n" y1="10" [attr.x2]="n+15" y2="10" 
-         class="line-activated" 
-         line="1"></line>
+         class="line-activated"></line>
     </svg> 
 </div>

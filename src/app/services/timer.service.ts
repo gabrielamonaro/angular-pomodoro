@@ -14,9 +14,9 @@ export class TimerService {
   }
 
  
-  pomodoro:string[] = [] 
+  pomodoro:string[] = ['00:03','00:05','00:02','00:05','00:02','00:05','00:10'] 
   config = ['25:00','05:00','15:00','4']
-  time = this.config[0]
+  time = this.pomodoro[0]
 
   firstPlay = true
   playing = true

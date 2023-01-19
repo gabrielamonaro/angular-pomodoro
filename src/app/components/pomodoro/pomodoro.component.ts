@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { AfterContentChecked, Component, DoCheck, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import {TimerService} from '../../services/timer.service'
+import {SequencesManagerService} from '../../services/sequences-manager.service'
 
 @Component({
   selector: 'app-pomodoro',
@@ -8,8 +9,12 @@ import {TimerService} from '../../services/timer.service'
 })
 export class PomodoroComponent implements OnInit {
   constructor(
-    private timer:TimerService
+    private timer:TimerService, 
+    private sequences:SequencesManagerService
   ) { }
+
+
+
 
  
 //Pomodoro Sequence: 
@@ -31,6 +36,8 @@ export class PomodoroComponent implements OnInit {
   @Input() newCircles:number[] = []
   @Input() newLines: number[] = []
 
+  @Input() pomodoroItem = this.sequences.pomodoroItem;
+
   ngOnInit(): void {
 
      const  sections= parseInt(this.timer.config[3])
@@ -51,9 +58,9 @@ export class PomodoroComponent implements OnInit {
     {
         this.newLines.push(this.linesPositions[i])
     }
-  }
 
-  
+    
+  }
 
 
 }

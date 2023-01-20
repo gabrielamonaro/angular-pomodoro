@@ -9,7 +9,7 @@ export class TimerService {
   constructor() { 
   }
 
-  pomodoro:string[] = ['00:10','00:05','00:03'] 
+  pomodoro:string[] = ['25:00','00:05','25:00'] 
   config = ['25:00','05:00','15:00','2']
   time = this.pomodoro[0]
   intervalName: string[] = ["Focuse Time", "Short Break", "Focuse Time"]

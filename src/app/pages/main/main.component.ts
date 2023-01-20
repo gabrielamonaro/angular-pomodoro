@@ -1,7 +1,7 @@
 import { AfterViewChecked, Component, Input, OnInit } from '@angular/core';
 import { TimerService } from '../../services/timer.service';
 import {SequencesManagerService} from '../../services/sequences-manager.service'
-import { count } from 'rxjs';
+
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
@@ -29,12 +29,10 @@ export class MainComponent implements OnInit, AfterViewChecked {
     const type = this.timer.changeButton()  // recebendo valor do botão - se é play ou pause
     this.timer.verifyButton(type) ? { return: {} } : {}//verificando botao e alterando flag playing (se botao = play é false - isso pq para clicar no play, o tempo deve estar parado)
     let lastMinute = true //acionando flag lastMinute como verdadeiro
-    let min = parseInt(this.time.slice(0, 2)) //captando minuto
-    let sec = parseInt(this.time.slice(3, 5)) //captando segundos
+    let min = parseInt(this.time.slice(0, 2))
+    let sec = parseInt(this.time.slice(3, 5))
 
     if (min == 0 && sec == 0) { //se o cronometro estiver zerado - seta o valor do próximo intervalo
-
-      
       if(this.timer.pomodoro.length == this.pomodoroItem)
       {
         this.time = '00:00'
@@ -43,10 +41,8 @@ export class MainComponent implements OnInit, AfterViewChecked {
         this.time = this.timer.pomodoro[this.pomodoroItem] 
         this.pomodoroItem++ //anda com o intervalo
       }
-      
       this.timer.changeButton() //muda o botão para voltar a ter opção 'play' 
       this.intervalName = this.timer.intervalName[this.counter] //pega o nome do próximo intervalo e coloca na tela
-      
       return;
     }
 
@@ -71,14 +67,13 @@ export class MainComponent implements OnInit, AfterViewChecked {
 
   timerSet(sec: number, min: number, lastMinute: boolean) {
     let secondsTimer = setInterval(() => {
+      this.funcao(this.getPercentage(sec-1, min))
       if (sec > 0 && min >= 0 && this.timer.playing) {
-        this.funcao(this.getPercentage(sec, min))
         sec--;
-        
         this.showTime(min, sec);
       } else if (sec == 0 && min != 0 && lastMinute && this.timer.playing) {
         [min, sec] = this.timer.setNewMinute(min, sec, lastMinute);
-        this.funcao(this.getPercentage(sec, min))
+       
         this.showTime(min, sec);
       } else {
         if (this.timer.playing) {
@@ -128,7 +123,7 @@ export class MainComponent implements OnInit, AfterViewChecked {
   getPercentage(sec: number, min: number)
   {
       const atual = sec + 60*min
-      return (atual*100)/this.total
+      return ((atual*100)/this.total)
   }
 }
 

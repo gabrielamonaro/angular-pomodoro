@@ -12,7 +12,7 @@ import { PomodoroComponent } from './components/pomodoro/pomodoro.component';
 import { TimerComponent } from './components/timer/timer.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { SectionComponent } from './components/section/section.component';
-import { CircleComponent } from './components/circle/circle.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +26,7 @@ import { CircleComponent } from './components/circle/circle.component';
     TimerComponent,
     MenuComponent,
     SectionComponent,
-    CircleComponent
+    FooterComponent
   ],
   imports: [
     BrowserModule,

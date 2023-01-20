@@ -1,8 +1,5 @@
-import { Time } from '@angular/common';
 import {Component, Input, OnInit } from '@angular/core';
-import { last } from 'rxjs';
 import {TimerService} from '../../services/timer.service'
-import { CircleComponent } from '../circle/circle.component';
 
 @Component({
   selector: 'app-timer',

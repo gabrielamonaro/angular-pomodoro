@@ -1,17 +1,14 @@
-import { identifierName } from '@angular/compiler';
 import {Injectable } from '@angular/core';
-
 
 @Injectable({
   providedIn: 'root'
 })  
 
-
 export class TimerService {
 
   constructor() { 
-  
   }
+
   pomodoro:string[] = ['00:10','00:05','00:03'] 
   config = ['25:00','05:00','15:00','2']
   time = this.pomodoro[0]
@@ -28,12 +25,10 @@ export class TimerService {
     this.time = this.intervalsAux[0]
   }
 
-
   setFormat = (num: any) => num >= 0 && num < 10 ? '0' + num.toString() :  num
 
   changeButton(){
     const botao = document.querySelector('#botao');
-    
     if(botao?.getAttribute("type") == "play")
     {
       botao.setAttribute("type", "pause")
@@ -49,14 +44,6 @@ export class TimerService {
    }  
   }
 
-  setNewMinute(min: number, sec:number, lastMinute: boolean)
-  {
-    min--
-    sec = 59
-    min == 0 ? lastMinute = false : {}
-    return [min, sec]
-  }
-
   finished()
   {
     if (this.playing)
@@ -66,7 +53,6 @@ export class TimerService {
       this.firstPlay = true
     }
   }
- 
 
   timeout()
   {
@@ -86,8 +72,6 @@ export class TimerService {
       return false
     }
   }
-
- 
 
   sequencesMaker(value: number)
   {

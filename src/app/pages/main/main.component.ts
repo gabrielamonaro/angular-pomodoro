@@ -32,8 +32,18 @@ export class MainComponent implements OnInit, AfterViewChecked {
     let sec = parseInt(this.time.slice(3, 5)) //captando segundos
 
     if (min == 0 && sec == 0) { //se o cronometro estiver zerado - seta o valor do próximo intervalo
-      this.timer.pomodoro.length != this.pomodoroItem? this.time = this.timer.pomodoro[this.pomodoroItem] : {}
-      this.pomodoroItem++ //anda com o intervalo
+      console.log(this.timer.pomodoro.length)
+      console.log(this.pomodoroItem)
+      console.log(this.timer.pomodoro.length == this.pomodoroItem)
+      if(this.timer.pomodoro.length == this.pomodoroItem)
+      {
+        this.time = '00:00'
+      }
+      else{
+        this.time = this.timer.pomodoro[this.pomodoroItem] 
+        this.pomodoroItem++ //anda com o intervalo
+      }
+      
       this.timer.changeButton() //muda o botão para voltar a ter opção 'play' 
       this.intervalName = this.timer.intervalName[this.counter] //pega o nome do próximo intervalo e coloca na tela
       

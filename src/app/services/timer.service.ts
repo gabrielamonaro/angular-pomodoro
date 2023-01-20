@@ -12,11 +12,12 @@ export class TimerService {
   constructor() { 
   
   }
-  pomodoro:string[] = ['00:03','00:05','00:02','00:05','00:02','00:05','00:10'] 
+  pomodoro:string[] = ['00:03','00:05','00:03'] 
   config = ['25:00','05:00','15:00','2']
   time = this.pomodoro[0]
   intervalName: string[] = ["Focuse Time", "Short Break", "Focuse Time"]
   intervalsAux :string[] = ['25:00','05:00','15:00','2']
+  sections:string = '2';
   firstPlay = true
   playing = true
 

@@ -42,7 +42,7 @@ export class PomodoroComponent implements OnInit {
 
   ngOnInit(): void {
 
-     const  sections= parseInt(this.timer.config[3])
+     const  sections= parseInt(this.timer.sections)
      if(sections >= 6)
      {
       this.widthBox = ((sections+9)*5) + (15*(sections)-1);
@@ -52,11 +52,11 @@ export class PomodoroComponent implements OnInit {
      }
     
 
-    for(let i=0; i<parseInt(this.timer.config[3]); i++)
+    for(let i=0; i<parseInt(this.timer.sections); i++)
     {
         this.newCircles.push(this.circlesPositions[i])
     }
-    for(let i=0; i<parseInt(this.timer.config[3])-1; i++)
+    for(let i=0; i<parseInt(this.timer.sections)-1; i++)
     {
         this.newLines.push(this.linesPositions[i])
     }

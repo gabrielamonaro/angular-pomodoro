@@ -16,6 +16,8 @@ export class SettingsComponent implements OnInit {
   {
     this.timer.sequencesMaker(parseInt(this.timer.config[3]))
     this.timer.setValues()
+    this.timer.firstPlay = true;
+    this.timer.sections = this.timer.config[3]
   }
 
 }

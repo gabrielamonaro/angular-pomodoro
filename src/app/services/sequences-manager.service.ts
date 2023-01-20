@@ -10,14 +10,11 @@ export class SequencesManagerService {
 
   first:boolean = true;
 
-
-
   currentCircle(){
     const primeiroCirculo = document.querySelectorAll('.next')[0];
     primeiroCirculo.classList.remove('next')
     primeiroCirculo.classList.add('current')
   }
-
 
   nextCircle()
   { 
@@ -25,7 +22,4 @@ export class SequencesManagerService {
       primeiroCirculo.classList.add('previous')
       primeiroCirculo.classList.remove('current')
   }
-  
-  
-  
 }

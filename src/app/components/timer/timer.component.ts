@@ -1,7 +1,8 @@
 import { Time } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import {Component, Input, OnInit } from '@angular/core';
 import { last } from 'rxjs';
 import {TimerService} from '../../services/timer.service'
+import { CircleComponent } from '../circle/circle.component';
 
 @Component({
   selector: 'app-timer',
@@ -11,11 +12,15 @@ import {TimerService} from '../../services/timer.service'
 export class TimerComponent implements OnInit {
  @Input() time = '';
  
+ progressCircle = document.querySelector('#progress');
+
   constructor(private timer: TimerService) {
   }
 
   ngOnInit(): void {
+    
   }
+  
   
 
 }

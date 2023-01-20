@@ -22,6 +22,7 @@ export class MainComponent implements OnInit, AfterViewChecked {
   counter:number = 0  // contador do nome do intervalo
   lastPeriod:boolean = false  //flag se é último intervalo
   firstPlay:boolean = true
+  total:number = 0
 
    go() {
     this.pomodoroItem == (parseInt(this.timer.config[3])*2)-1 ? this.lastPeriod = true : {} //verificando se é último intervalo
@@ -32,9 +33,8 @@ export class MainComponent implements OnInit, AfterViewChecked {
     let sec = parseInt(this.time.slice(3, 5)) //captando segundos
 
     if (min == 0 && sec == 0) { //se o cronometro estiver zerado - seta o valor do próximo intervalo
-      console.log(this.timer.pomodoro.length)
-      console.log(this.pomodoroItem)
-      console.log(this.timer.pomodoro.length == this.pomodoroItem)
+
+      
       if(this.timer.pomodoro.length == this.pomodoroItem)
       {
         this.time = '00:00'
@@ -63,6 +63,7 @@ export class MainComponent implements OnInit, AfterViewChecked {
     }
 
     if (this.timer.firstPlay) {
+      this.setTotal(sec, min)
       this.timerSet(sec, min, lastMinute);
       this.timer.firstPlay = false;
     }
@@ -71,13 +72,17 @@ export class MainComponent implements OnInit, AfterViewChecked {
   timerSet(sec: number, min: number, lastMinute: boolean) {
     let secondsTimer = setInterval(() => {
       if (sec > 0 && min >= 0 && this.timer.playing) {
+        this.funcao(this.getPercentage(sec, min))
         sec--;
+        
         this.showTime(min, sec);
       } else if (sec == 0 && min != 0 && lastMinute && this.timer.playing) {
         [min, sec] = this.timer.setNewMinute(min, sec, lastMinute);
+        this.funcao(this.getPercentage(sec, min))
         this.showTime(min, sec);
       } else {
         if (this.timer.playing) {
+          this.funcao(this.getPercentage(sec, min))
           clearInterval(secondsTimer);
           this.timer.finished();
           this.pomodoroItem%2 != 0? this.sequences.nextCircle() :{}
@@ -94,6 +99,38 @@ export class MainComponent implements OnInit, AfterViewChecked {
 
   showTime = (min: number, sec: number) =>
     (this.time = this.timer.setFormat(min) + ':' + this.timer.setFormat(sec));
+
+
+    funcao(percentage: number)
+  {
+    const progressCircle = document.querySelector('#progress')
+    console.log(progressCircle)
+    let radius = progressCircle?.getAttribute('r')
+    let circunferencia
+    if(radius)
+    {
+      circunferencia = parseInt(radius) * 2 * Math.PI
+    }
+    this.setProgress(progressCircle, percentage, circunferencia)
+  }
+  
+  setProgress(progressCircle: any, percent: number, circunferencia: any )
+  {
+      if(progressCircle)
+      {
+        progressCircle.style.strokeDashoffset = circunferencia - (percent/100) * circunferencia;
+      }
+  }
+  
+  setTotal(sec: number, min: number)
+  {
+    this.total = sec + 60*min
+  }
+  getPercentage(sec: number, min: number)
+  {
+      const atual = sec + 60*min
+      return (atual*100)/this.total
+  }
 }
 
 

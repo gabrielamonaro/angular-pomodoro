@@ -5,34 +5,25 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class SequencesManagerService {
-  
+  sections: string[]= ['Focuse Time', 'Short Break','Long Break']
   constructor() { }
 
-  pomodoroItem:number = 1;
   first:boolean = true;
-  
+
+
 
   currentCircle(){
-    if(this.pomodoroItem%2 != 0 )
-    {
-    console.log(this.pomodoroItem)
     const primeiroCirculo = document.querySelectorAll('.next')[0];
     primeiroCirculo.classList.remove('next')
     primeiroCirculo.classList.add('current')
-    }
   }
 
 
   nextCircle()
   { 
-    if(this.pomodoroItem%2 != 0)
-    { 
       const primeiroCirculo = document.querySelectorAll('.current')[0];
       primeiroCirculo.classList.add('previous')
       primeiroCirculo.classList.remove('current')
-    }
-    
-
   }
   
   

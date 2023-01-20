@@ -1,43 +1,51 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { AfterViewChecked, Component, Input, OnInit } from '@angular/core';
 import { TimerService } from '../../services/timer.service';
 import {SequencesManagerService} from '../../services/sequences-manager.service'
+import { count } from 'rxjs';
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css'],
 })
-export class MainComponent implements OnInit {
-
+export class MainComponent implements OnInit, AfterViewChecked {
   constructor(
     private timer: TimerService,
     private sequences: SequencesManagerService
-    ) {
-  }
+    ) { }
+  ngAfterViewChecked(): void { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
+  @Input() pomodoroItem = 1;    //contador de intervalo
+  @Input() intervalName: string = this.timer.intervalName[0] //nome do intervalo atual
+  @Input() time = this.timer.time //tempo atual
+  counter:number = 0  // contador do nome do intervalo
+  lastPeriod:boolean = false  //flag se é último intervalo
+  firstPlay:boolean = true
 
-  @Input() intervalName: string = 'Focuse Time';
-  @Input() time = this.timer.time;
-  @Input() pomodoroItem = this.sequences.pomodoroItem
-
-  
    go() {
-    const type = this.timer.changeButton();
-    this.timer.verifyButton(type) ? { return: {} } : {};
-    let lastMinute = true;
-    let min = parseInt(this.time.slice(0, 2));
-    let sec = parseInt(this.time.slice(3, 5));
+    this.pomodoroItem == (parseInt(this.timer.config[3])*2)-1 ? this.lastPeriod = true : {} //verificando se é último intervalo
+    const type = this.timer.changeButton()  // recebendo valor do botão - se é play ou pause
+    this.timer.verifyButton(type) ? { return: {} } : {}//verificando botao e alterando flag playing (se botao = play é false - isso pq para clicar no play, o tempo deve estar parado)
+    let lastMinute = true //acionando flag lastMinute como verdadeiro
+    let min = parseInt(this.time.slice(0, 2)) //captando minuto
+    let sec = parseInt(this.time.slice(3, 5)) //captando segundos
 
-    if (min == 0 && sec == 0) {
-      this.timer.pomodoro.length != this.sequences.pomodoroItem? this.time = this.timer.pomodoro[this.sequences.pomodoroItem] : {}
-      this.sequences.pomodoroItem++
+    if (min == 0 && sec == 0) { //se o cronometro estiver zerado - seta o valor do próximo intervalo
+      this.timer.pomodoro.length != this.pomodoroItem? this.time = this.timer.pomodoro[this.pomodoroItem] : {}
+      this.pomodoroItem++ //anda com o intervalo
+      this.timer.changeButton() //muda o botão para voltar a ter opção 'play' 
+      this.intervalName = this.timer.intervalName[this.counter] //pega o nome do próximo intervalo e coloca na tela
       
-      this.timer.changeButton();
       return;
     }
 
-    this.pomodoroItem%2 != 0 ? this.sequences.currentCircle(): {}
+    this.intervalName = this.timer.intervalName[this.counter] //colocando nome do intervalo na tela
+    if(this.firstPlay)
+    {
+      this.pomodoroItem%2 != 0 ? this.sequences.currentCircle(): {} //
+      this.firstPlay = false;
+    }
 
     if (sec == 0) {
       sec = 60;
@@ -62,9 +70,12 @@ export class MainComponent implements OnInit {
         if (this.timer.playing) {
           clearInterval(secondsTimer);
           this.timer.finished();
-          this.sequences.nextCircle();
-
+          this.pomodoroItem%2 != 0? this.sequences.nextCircle() :{}
+          this.lastPeriod? this.counter = 0 : this.counter++
+          this.firstPlay = true;
         }
+
+
       }
     }, 1000);
     sec--;
@@ -74,3 +85,5 @@ export class MainComponent implements OnInit {
   showTime = (min: number, sec: number) =>
     (this.time = this.timer.setFormat(min) + ':' + this.timer.setFormat(sec));
 }
+
+

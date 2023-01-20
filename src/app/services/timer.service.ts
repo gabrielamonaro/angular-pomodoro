@@ -17,6 +17,7 @@ export class TimerService {
   pomodoro:string[] = ['00:03','00:05','00:02','00:05','00:02','00:05','00:10'] 
   config = ['25:00','05:00','15:00','4']
   time = this.pomodoro[0]
+  intervalName: string[] = ["Focuse Time", "Short Break", "Focuse Time"]
 
   firstPlay = true
   playing = true
@@ -97,17 +98,21 @@ export class TimerService {
   {
     this.pomodoro = []
     let shortBreakCounter = 0;
-
+    this.intervalName = []
     for(let i=0; i<value; i++)
     {
       this.pomodoro.push(this.config[0])
+      this.intervalName.push('Focuse Time')
       if(shortBreakCounter == 3 && i != value-1)
       {
         this.pomodoro.push(this.config[2])
+        this.intervalName.push('Long Break')
+
         shortBreakCounter = 0
       }
       else{
         i != value-1?this.pomodoro.push(this.config[1]):{}
+        this.intervalName.push('Short Break')
         shortBreakCounter++
       }
       
@@ -115,7 +120,6 @@ export class TimerService {
     }
     console.log("this.pomodoro:")
       console.log(this.pomodoro)
-      console.log("______")
   }
 }
 

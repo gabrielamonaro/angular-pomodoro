@@ -11,7 +11,9 @@ export class PomodoroComponent implements OnInit {
   constructor(
     private timer:TimerService, 
     private sequences:SequencesManagerService
-  ) { }
+  ) {
+
+   }
 
 
 
@@ -36,7 +38,7 @@ export class PomodoroComponent implements OnInit {
   @Input() newCircles:number[] = []
   @Input() newLines: number[] = []
 
-  @Input() pomodoroItem = this.sequences.pomodoroItem;
+
 
   ngOnInit(): void {
 
@@ -58,9 +60,6 @@ export class PomodoroComponent implements OnInit {
     {
         this.newLines.push(this.linesPositions[i])
     }
-
-    
   }
-
 
 }

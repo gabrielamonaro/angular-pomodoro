@@ -38,6 +38,8 @@ export class SectionComponent implements OnInit {
     this.timer.setValues(p.value, element.id)
     this.changeVisibility(element.id);
     this.timer.firstPlay = true;
+
+
   }
 
 

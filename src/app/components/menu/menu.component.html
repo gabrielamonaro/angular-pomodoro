@@ -3,7 +3,8 @@
         <li id="clock"
             [routerLink]="['']"
             [routerLinkActive]="['menu-ativo']"
-            [routerLinkActiveOptions]="{exact:true}">    
+            [routerLinkActiveOptions]="{exact:true}"
+            (click)="cancel()">    
 
             <img src="../../../assets/imgs/clock.svg" 
             class="icon"  alt="">
@@ -11,7 +12,7 @@
         <li id="settings"
             [routerLink]="['/settings']"
             [routerLinkActive]="['menu-ativo']"
-            [routerLinkActiveOptions]="{exact:true}"> 
+            [routerLinkActiveOptions]="{exact:true}" > 
             <img src="../../../assets/imgs/settings.svg" 
             class="icon" >
         </li>

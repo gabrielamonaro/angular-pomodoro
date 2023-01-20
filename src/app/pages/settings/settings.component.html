@@ -9,7 +9,7 @@
 
     </div>
     <div class="container-botoes">
-        <app-btn buttonClass="btn-transparent" text="Cancelar" [routerLink]="['']" ></app-btn>
+        <app-btn buttonClass="btn-transparent" text="Cancelar" [routerLink]="['']" (click)="cancel()"></app-btn>
         <app-btn (click)="save()" buttonClass="btn-padrao" text="Salvar" [routerLink]="['']" ></app-btn>
     </div>
 </div>

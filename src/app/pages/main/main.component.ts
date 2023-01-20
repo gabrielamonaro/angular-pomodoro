@@ -1,22 +1,29 @@
-import {Component, Input, OnInit } from '@angular/core';
+import {Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import {TimerService } from '../../services/timer.service';
 import {SequencesManagerService} from '../../services/sequences-manager.service'
 import {CircularLineService} from '../../services/circular-line.service'
 import {TimeChangerService} from '../../services/time-changer.service'
-import { Time } from '@angular/common';
+
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css'],
 })
-export class MainComponent implements OnInit {
+export class MainComponent implements OnInit, OnDestroy {
   constructor(
     private timer: TimerService,
     private sequences: SequencesManagerService,
     private line:CircularLineService,
     private timeChanger: TimeChangerService
     ) { }
+  ngOnDestroy(): void {
+
+    this.line.setLine(100)
+    const type = this.timer.changeButton()  
+    this.timer.verifyButton(type) ? { return: {} } : {}
+    clearInterval(this.secondsTimer);
+  }
 
   ngOnInit(): void { }
 
@@ -27,6 +34,7 @@ export class MainComponent implements OnInit {
   lastPeriod:boolean = false  //flag se é último intervalo
   firstPlay:boolean = true
   total:number = 0
+  secondsTimer:any 
 
    go() {
 
@@ -71,23 +79,24 @@ export class MainComponent implements OnInit {
 
   timerSet(sec: number, min: number, lastMinute: boolean) {
 
-    let secondsTimer = setInterval(() => {
+  this.secondsTimer = setInterval(() => {
 
-      this.line.setLine(this.line.getPercentage(sec-1, min, this.total))
+    
 
       if (sec > 0 && min >= 0 && this.timer.playing) {
         sec--;
+        this.line.setLine(this.line.getPercentage(sec-1, min, this.total))
         this.showTime(min, sec);
       } else if (sec == 0 && min != 0 && lastMinute && this.timer.playing) {
         [min, sec] = this.timeChanger.setNewMinute(min, sec, lastMinute);
+        this.line.setLine(this.line.getPercentage(sec-1, min, this.total))
         this.showTime(min, sec);
       }
       
       else {
         if (this.timer.playing) {
-
-          this.line.setLine(this.line.getPercentage(sec, min, this.total))
-          clearInterval(secondsTimer);
+          this.line.setLine(100)
+          clearInterval(this.secondsTimer);
           this.timer.finished();
           this.pomodoroItem%2 != 0? this.sequences.nextCircle() :{}
           this.lastPeriod? this.counter = 0 : this.counter++

@@ -1,4 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
+import {CircularLineService} from '../../services/circular-line.service'
+import {TimerService} from '../../services/timer.service'
+
 
 @Component({
   selector: 'app-menu',
@@ -7,7 +10,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
   @Input() ativo:string = 'clock'
-  constructor() { }
+  constructor(private line: CircularLineService, private timer:TimerService) { }
 
   ngOnInit(): void {
     if(this.ativo == 'clock')
@@ -20,6 +23,12 @@ export class MenuComponent implements OnInit {
       document.querySelector('#settings')?.classList.add('menu-ativo');
       document.querySelector('#clock')?.classList.remove('menu-ativo');
     }
+  }
+
+  cancel()
+  {
+    this.timer.firstPlay = true;
+    this.line.setLine(0)
   }
 
  

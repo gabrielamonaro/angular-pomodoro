@@ -12,7 +12,7 @@ export class SectionComponent implements OnInit {
   visibility:boolean[] = [false,false,false,false];
   sections = sections_data;
   @Input() id_option: string[] = this.timer.config
- 
+
   constructor(
     private timer:TimerService,
     private sequencia:SequencesManagerService
@@ -23,24 +23,24 @@ export class SectionComponent implements OnInit {
   }
 
   changeVisibility(id: number){
-   if(this.visibility[id-1] == false)
-    {
-      this.visibility[id-1] = true;
-     
-    }
-    else{
-      this.visibility[id-1] = false;
-    }
+    this.visibility[id-1] == false?  this.visibility[id-1] = true : this.visibility[id-1] = false;
+
   }
 
   Clicou(element: any, p: any){
-    element.id != 3 ? this.id_option[0] = (p.value) : this.timer.sequencesMaker(p.value)
-    this.timer.setValues(p.value, element.id)
+    //element.id != 3 ? this.id_option[element.id] = (p.value) : {}
+    this.id_option[element.id] = (p.value)
+    //this.timer.setValues(p.value, element.id)
+    this.intervalAux(p.value, element.id)
     this.changeVisibility(element.id);
     this.timer.firstPlay = true;
-
-
   }
+
+  intervalAux(value: string, id:number)
+  {
+    this.timer.intervalsAux[id] = value;
+  }
+
 
 
 }

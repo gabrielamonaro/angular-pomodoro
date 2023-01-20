@@ -12,25 +12,19 @@ export class TimerService {
   constructor() { 
   
   }
-
- 
   pomodoro:string[] = ['00:03','00:05','00:02','00:05','00:02','00:05','00:10'] 
-  config = ['25:00','05:00','15:00','4']
+  config = ['25:00','05:00','15:00','2']
   time = this.pomodoro[0]
   intervalName: string[] = ["Focuse Time", "Short Break", "Focuse Time"]
-
+  intervalsAux :string[] = ['25:00','05:00','15:00','2']
   firstPlay = true
   playing = true
-  
-  //focuseTime, shortBreak, longBreak,sections 
 
-  setValues(newTime: string, id: number)
+  
+  setValues()
   {
-    this.config[id] = newTime;
-    if( id!=3)
-    {
-      this.time = newTime;
-    }    
+    this.config = this.intervalsAux
+    this.time = this.intervalsAux[0]
   }
 
 

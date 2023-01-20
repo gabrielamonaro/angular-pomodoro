@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import {TimerService} from '../../services/timer.service'
 
 @Component({
   selector: 'app-settings',
@@ -7,9 +8,14 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class SettingsComponent implements OnInit {
   @Input() focuseTime = '25:00'
-  constructor() { }
+  constructor(private timer: TimerService ) { }
 
   ngOnInit(): void {
+  }
+  save()
+  {
+    this.timer.sequencesMaker(parseInt(this.timer.config[3]))
+    this.timer.setValues()
   }
 
 }

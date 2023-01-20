@@ -8,6 +8,6 @@
         </div>
     </div>
     <div *ngIf="visibility[element.id-1]" class="open">
-        <span class="option" *ngFor="let p of element.options" (click)="Clicou(element, p)">  {{p.value.slice(0,2)}} </span>
+        <span class="option" *ngFor="let p of element.options" (click)="Clicou(element, p)">  {{p.value}} </span>
     </div>
 </div>

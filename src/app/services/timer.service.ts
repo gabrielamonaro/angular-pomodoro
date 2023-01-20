@@ -109,12 +109,8 @@ export class TimerService {
         i != value-1?this.pomodoro.push(this.config[1]):{}
         this.intervalName.push('Short Break')
         shortBreakCounter++
-      }
-      
-      
+      }      
     }
-    console.log("this.pomodoro:")
-      console.log(this.pomodoro)
   }
 
   

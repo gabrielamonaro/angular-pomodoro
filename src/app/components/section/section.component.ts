@@ -28,14 +28,10 @@ export class SectionComponent implements OnInit {
   }
 
   Clicou(element: any, p: any){
-    //element.id != 3 ? this.id_option[element.id] = (p.value) : {}
     this.id_option[element.id] = (p.value)
-    //this.timer.setValues(p.value, element.id)
     this.intervalAux(p.value, element.id)
     this.changeVisibility(element.id);
-   
-    console.log(this.timer.config)
-  }
+     }
 
   intervalAux(value: string, id:number)
   {

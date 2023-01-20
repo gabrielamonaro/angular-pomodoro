@@ -104,14 +104,13 @@ export class MainComponent implements OnInit, AfterViewChecked {
     funcao(percentage: number)
   {
     const progressCircle = document.querySelector('#progress')
-    console.log(progressCircle)
     let radius = progressCircle?.getAttribute('r')
     let circunferencia
     if(radius)
     {
       circunferencia = parseInt(radius) * 2 * Math.PI
     }
-    this.setProgress(progressCircle, percentage, circunferencia)
+    this.setProgress(progressCircle, 100-percentage, circunferencia)
   }
   
   setProgress(progressCircle: any, percent: number, circunferencia: any )
